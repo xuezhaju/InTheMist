@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmoyx7s1s1uu8"]
+
+[ext_resource type="Script" uid="uid://bvxyn37jl2eo" path="res://Player/player.gd" id="1_3qydi"]
+[ext_resource type="PackedScene" uid="uid://bqoo66rvskdpe" path="res://Component/player_input_synchronizer.tscn" id="2_ddoul"]
+[ext_resource type="AudioStream" uid="uid://e7hcpktkixal" path="res://SFX/jump.wav" id="2_q3lat"]
+[ext_resource type="PackedScene" uid="uid://cjyms48oaw4np" path="res://Player/player_ui/player_ui.tscn" id="3_tok1r"]
+[ext_resource type="Script" uid="uid://bot4voda2dp5e" path="res://PlayerDanren/摇杆.gd" id="5_6ysni"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_vlldt"]
+[ext_resource type="FontFile" uid="uid://b5nd0c05eyg4j" path="res://HarmonyOS_Sans_Regular.ttf" id="7_s1rgi"]
+[ext_resource type="PackedScene" uid="uid://ctn11r6q450oe" path="res://UI/FPS/帧率.tscn" id="7_vlldt"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ddoul"]
+properties/0/path = NodePath(".:global_position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
+
+[node name="PLAYER" type="CharacterBody3D" node_paths=PackedStringArray("joystick_left", "joystick_right")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.902737, 0)
+script = ExtResource("1_3qydi")
+joystick_left = NodePath("摇杆/Virtual_Joystick")
+joystick_right = NodePath("摇杆/Virtual_Joystick2")
+
+[node name="PlayerInputSynchronizerComponent" parent="." instance=ExtResource("2_ddoul")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ddoul")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3qydi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_q3lat")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190344, 0.583504, -0.0759861)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+transform = Transform3D(1.25, 0, 0, 0, 1.24566, -0.104033, 0, 0.104033, 1.24566, 0.0585947, 0.299605, 0.0366613)
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q3lat")
+volume_db = -19.675
+pitch_scale = 0.86
+bus = &"SFX"
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_tok1r")]
+
+[node name="摇杆" type="CanvasLayer" parent="."]
+script = ExtResource("5_6ysni")
+
+[node name="Virtual_Joystick" parent="摇杆" instance=ExtResource("6_vlldt")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Virtual_Joystick2" parent="摇杆" instance=ExtResource("6_vlldt")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+
+[node name="Jump" type="Button" parent="摇杆"]
+offset_left = 957.0
+offset_top = 87.0
+offset_right = 1054.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("7_s1rgi")
+theme_override_font_sizes/font_size = 40
+text = "Jump"
+
+[node name="Run" type="Button" parent="摇杆"]
+offset_left = 50.0
+offset_top = 102.0
+offset_right = 142.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("7_s1rgi")
+theme_override_font_sizes/font_size = 40
+text = "RUN"
+
+[node name="Slow" type="Button" parent="摇杆"]
+offset_left = 50.0
+offset_top = 213.0
+offset_right = 145.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("7_s1rgi")
+theme_override_font_sizes/font_size = 40
+text = "Slow"
+
+[node name="Walk" type="Button" parent="摇杆"]
+offset_left = 189.0
+offset_top = 160.0
+offset_right = 284.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("7_s1rgi")
+theme_override_font_sizes/font_size = 40
+text = "Walk"
+
+[node name="Back" type="Button" parent="摇杆"]
+offset_left = 183.0
+offset_top = 28.0
+offset_right = 295.0
+offset_bottom = 84.0
+theme_override_fonts/font = ExtResource("7_s1rgi")
+theme_override_font_sizes/font_size = 40
+text = "BACK"
+
+[node name="帧率" parent="." instance=ExtResource("7_vlldt")]
+
+[connection signal="pressed" from="摇杆/Jump" to="." method="_on_jump_pressed"]
+[connection signal="pressed" from="摇杆/Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="摇杆/Slow" to="." method="_on_slow_pressed"]
+[connection signal="pressed" from="摇杆/Walk" to="." method="_on_walk_pressed"]

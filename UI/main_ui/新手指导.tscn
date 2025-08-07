@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://caucb1sbpm5n0"]
+
+[ext_resource type="Texture2D" uid="uid://cmolgyduhxcxo" path="res://Asset/UI/back.bmp" id="1_o48yy"]
+[ext_resource type="FontFile" uid="uid://b5nd0c05eyg4j" path="res://HarmonyOS_Sans_Regular.ttf" id="2_yaw47"]
+[ext_resource type="Script" uid="uid://cxwiyng05aev7" path="res://UI/模式选择/button.gd" id="3_yaw47"]
+[ext_resource type="PackedScene" uid="uid://ctn11r6q450oe" path="res://UI/FPS/帧率.tscn" id="4_jtlrs"]
+
+[node name="新手指导" type="Node2D"]
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_o48yy")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 457.0
+offset_top = 60.0
+offset_right = 709.0
+offset_bottom = 582.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_yaw47")
+theme_override_font_sizes/font_size = 26
+text = "WASD移动 空格跳跃
+按住shift跑步
+按住Ctrl潜行
+ESC键返回  
+F键显示光标
+K键脱离卡死
+(仅单人可用)
+设置里面灵敏度
+      建议保持原配
+再次调节灵敏度时
+发现进度条回到起点
+为正常现象
+地图会穿模
+如果发生请按K键
+QWQ祝你好运QWQ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Label"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 536.0
+offset_right = 155.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("2_yaw47")
+theme_override_font_sizes/font_size = 25
+text = "返回"
+script = ExtResource("3_yaw47")
+
+[node name="帧率" parent="." instance=ExtResource("4_jtlrs")]
+
+[connection signal="pressed" from="Label/Button" to="Label/Button" method="_on_pressed"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://six3ctfuoaaj"]
+
+[ext_resource type="Script" uid="uid://ow7kexpxb4tl" path="res://online_join.gd" id="1_sugy1"]
+[ext_resource type="Texture2D" uid="uid://cmolgyduhxcxo" path="res://Asset/UI/back.bmp" id="2_glpng"]
+[ext_resource type="FontFile" uid="uid://b5nd0c05eyg4j" path="res://HarmonyOS_Sans_Regular.ttf" id="3_tmne2"]
+[ext_resource type="PackedScene" uid="uid://ctn11r6q450oe" path="res://UI/FPS/帧率.tscn" id="4_glpng"]
+
+[node name="online" type="Node2D"]
+script = ExtResource("1_sugy1")
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_glpng")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="create" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tmne2")
+theme_override_font_sizes/font_size = 45
+text = "创建房间"
+
+[node name="join" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tmne2")
+theme_override_font_sizes/font_size = 45
+text = "加入游戏"
+
+[node name="back" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tmne2")
+theme_override_font_sizes/font_size = 45
+text = "返回"
+
+[node name="帧率" parent="." instance=ExtResource("4_glpng")]
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/back" to="." method="_on_back_pressed"]

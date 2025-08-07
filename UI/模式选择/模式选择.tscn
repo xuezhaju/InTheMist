@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj2eo7ygphbe5"]
+
+[ext_resource type="Texture2D" uid="uid://cmolgyduhxcxo" path="res://Asset/UI/back.bmp" id="1_trclp"]
+[ext_resource type="FontFile" uid="uid://b5nd0c05eyg4j" path="res://HarmonyOS_Sans_Regular.ttf" id="2_ltwj8"]
+[ext_resource type="Script" uid="uid://cwnnahnkpechw" path="res://UI/模式选择/online.gd" id="3_ltwj8"]
+[ext_resource type="Script" uid="uid://d2gde20l2f43v" path="res://UI/模式选择/danren.gd" id="3_t4des"]
+[ext_resource type="Script" uid="uid://dxqxlv4jq3b88" path="res://UI/模式选择/back.gd" id="4_ltwj8"]
+[ext_resource type="PackedScene" uid="uid://cimlde55xpoic" path="res://UI/tooltip/tooltip1.tscn" id="5_uoj1m"]
+[ext_resource type="PackedScene" uid="uid://ctn11r6q450oe" path="res://UI/FPS/帧率.tscn" id="7_3lmuq"]
+
+[node name="模式选择" type="Node2D"]
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_trclp")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="danren" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ltwj8")
+theme_override_font_sizes/font_size = 45
+text = "单人游戏
+"
+script = ExtResource("3_t4des")
+
+[node name="online" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ltwj8")
+theme_override_font_sizes/font_size = 45
+text = "多人游戏"
+script = ExtResource("3_ltwj8")
+
+[node name="tooltip" parent="CenterContainer/VBoxContainer/online" instance=ExtResource("5_uoj1m")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 49.0
+offset_bottom = 26.0
+
+[node name="back" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ltwj8")
+theme_override_font_sizes/font_size = 40
+text = "返回"
+script = ExtResource("4_ltwj8")
+
+[node name="帧率" parent="." instance=ExtResource("7_3lmuq")]
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/danren" to="CenterContainer/VBoxContainer/danren" method="_on_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/online" to="CenterContainer/VBoxContainer/online" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer/VBoxContainer/online" to="CenterContainer/VBoxContainer/online" method="_on_mouse_exited"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/online" to="CenterContainer/VBoxContainer/online" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/back" to="CenterContainer/VBoxContainer/back" method="_on_pressed"]

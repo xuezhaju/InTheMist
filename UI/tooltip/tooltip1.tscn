@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cimlde55xpoic"]
+
+[ext_resource type="Script" uid="uid://glr665qj4vgn" path="res://UI/tooltip/tooltip1.gd" id="1_utj2g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1esw"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 14.0
+bg_color = Color(0, 0.0705882, 0.12549, 0.498039)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="tooltip" type="PanelContainer"]
+offset_left = 100.0
+offset_top = 45.0
+offset_right = 149.0
+offset_bottom = 71.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r1esw")
+script = ExtResource("1_utj2g")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "注意，这仅限于局域网联机，并且还处于测试阶段，存在BUG！在使用本功能时，请不要再一台机子上运行两个，如果一定要运行，请确保在全屏模式下运行，否则会崩端。
+本功能作者正在尽力开发，敬请期待，祝您游玩愉快
+QWQ"
+fit_content = true
+horizontal_alignment = 1

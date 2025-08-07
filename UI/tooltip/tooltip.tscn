@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://djwgryct4d03b"]
+
+[ext_resource type="Script" uid="uid://b5uk2qjpvcn58" path="res://Player/player_ui/tooltip.gd" id="1_6mr8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1esw"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 14.0
+bg_color = Color(0, 0.0705882, 0.12549, 0.498039)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="tooltip" type="PanelContainer"]
+offset_left = 100.0
+offset_top = 45.0
+offset_right = 149.0
+offset_bottom = 71.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r1esw")
+script = ExtResource("1_6mr8l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "请输入局域网端口，如果你玩过Minecraft一定很熟
+(此功能还未开放)"
+fit_content = true
+horizontal_alignment = 1

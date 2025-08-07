@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://caweqcsfa7pk"]
+
+[ext_resource type="FontFile" uid="uid://b5nd0c05eyg4j" path="res://HarmonyOS_Sans_Regular.ttf" id="1_vvx83"]
+[ext_resource type="Script" uid="uid://ck61y3dpsmej" path="res://Player/player_ui/TooltipInteract.gd" id="2_7xsn5"]
+[ext_resource type="PackedScene" uid="uid://djwgryct4d03b" path="res://UI/tooltip/tooltip.tscn" id="3_isibd"]
+[ext_resource type="Script" uid="uid://bnscluio8a8gb" path="res://Player/player_ui/back.gd" id="4_2ial0"]
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 452.0
+offset_top = 153.0
+offset_right = 702.0
+offset_bottom = 213.0
+theme_override_fonts/font = ExtResource("1_vvx83")
+theme_override_font_sizes/font_size = 50
+text = "局域网开放"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Setting" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/Setting"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vvx83")
+theme_override_font_sizes/font_size = 35
+text = "端口:"
+script = ExtResource("2_7xsn5")
+
+[node name="tooltip" parent="CenterContainer/Setting/LineEdit" instance=ExtResource("3_isibd")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 148.0
+offset_bottom = 121.0
+
+[node name="Create" type="Button" parent="CenterContainer/Setting"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vvx83")
+theme_override_font_sizes/font_size = 35
+text = "创建"
+
+[node name="back" type="Button" parent="CenterContainer/Setting"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vvx83")
+theme_override_font_sizes/font_size = 35
+text = "返回"
+script = ExtResource("4_2ial0")
+
+[connection signal="mouse_entered" from="CenterContainer/Setting/LineEdit" to="CenterContainer/Setting/LineEdit/tooltip" method="toggle" binds= [true]]
+[connection signal="mouse_exited" from="CenterContainer/Setting/LineEdit" to="CenterContainer/Setting/LineEdit/tooltip" method="toggle" binds= [false]]
+[connection signal="pressed" from="CenterContainer/Setting/back" to="CenterContainer/Setting/back" method="_on_pressed"]

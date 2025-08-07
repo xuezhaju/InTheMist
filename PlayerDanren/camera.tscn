@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://di2ad6dklyuvh"]
+
+[sub_resource type="Resource" id="Resource_kx3c3"]
+metadata/__load_path__ = "res://camera_3d.gd"
+
+[node name="Camera" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = SubResource("Resource_kx3c3")

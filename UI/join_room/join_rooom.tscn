@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://li6c5ne3cljf"]
+
+[ext_resource type="Texture2D" uid="uid://cmolgyduhxcxo" path="res://Asset/UI/back.bmp" id="1_lwu10"]
+[ext_resource type="Script" uid="uid://vc2vayl4qgyy" path="res://UI/join_room/join_rooom.gd" id="1_xr3qy"]
+[ext_resource type="FontFile" uid="uid://b5nd0c05eyg4j" path="res://HarmonyOS_Sans_Regular.ttf" id="2_xr3qy"]
+[ext_resource type="PackedScene" uid="uid://ctn11r6q450oe" path="res://UI/FPS/帧率.tscn" id="4_xjyhm"]
+
+[node name="join_rooom" type="Node2D"]
+script = ExtResource("1_xr3qy")
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_lwu10")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="IP" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xr3qy")
+theme_override_font_sizes/font_size = 30
+text = "IP:"
+clear_button_enabled = true
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xr3qy")
+theme_override_font_sizes/font_size = 30
+text = "端口:"
+clear_button_enabled = true
+
+[node name="join" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xr3qy")
+theme_override_font_sizes/font_size = 30
+text = "加入房间"
+
+[node name="back" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xr3qy")
+theme_override_font_sizes/font_size = 30
+text = "返回"
+
+[node name="帧率" parent="." instance=ExtResource("4_xjyhm")]
+
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/IP" to="." method="_on_ip_text_changed"]
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/back" to="." method="_on_back_pressed"]

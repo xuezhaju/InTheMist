@@ -1,0 +1,219 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8x1cnsl6rf4r"]
+
+[ext_resource type="Texture2D" uid="uid://cmolgyduhxcxo" path="res://Asset/UI/back.bmp" id="1_2fwl4"]
+[ext_resource type="Script" uid="uid://clsevj2d6kjiw" path="res://UI/main_ui/ui.gd" id="1_dajm1"]
+[ext_resource type="FontFile" uid="uid://b5nd0c05eyg4j" path="res://HarmonyOS_Sans_Regular.ttf" id="3_hat8c"]
+[ext_resource type="Script" uid="uid://cmxiy5jplxgxm" path="res://UI/main_ui/灵敏度.gd" id="4_3sbvi"]
+[ext_resource type="PackedScene" uid="uid://ctn11r6q450oe" path="res://UI/FPS/帧率.tscn" id="5_rm2m0"]
+
+[sub_resource type="Theme" id="Theme_dajm1"]
+
+[node name="UI" type="Node2D"]
+script = ExtResource("1_dajm1")
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_2fwl4")
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(1152, 216)
+offset_top = 48.0
+offset_right = 1152.0
+offset_bottom = 316.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 60
+text = "迷雾之中"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1152, 0)
+offset_top = 223.0
+offset_right = 1152.0
+offset_bottom = 643.0
+theme = SubResource("Theme_dajm1")
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Play" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 30
+text = "开始游戏
+"
+
+[node name="Setting" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 30
+text = "设置"
+
+[node name="UPqwq" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 30
+text = "制作名单
+"
+
+[node name="新手指导" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 30
+text = "新手指导"
+
+[node name="Quit" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 30
+text = "退出
+"
+
+[node name="SettingMenu" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="fullscreen" type="CheckBox" parent="CenterContainer/SettingMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 15
+text = "全屏"
+
+[node name="is_fps" type="CheckBox" parent="CenterContainer/SettingMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 15
+text = "FPS"
+
+[node name="性能模式" type="CheckBox" parent="CenterContainer/SettingMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 15
+text = "性能模式"
+
+[node name="主音量" type="HSlider" parent="CenterContainer/SettingMenu"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="CenterContainer/SettingMenu/主音量"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = -3.0
+offset_top = -11.0
+offset_right = 97.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 18
+text = "主音量"
+horizontal_alignment = 1
+
+[node name="背景音乐" type="HSlider" parent="CenterContainer/SettingMenu"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="CenterContainer/SettingMenu/背景音乐"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -14.0
+offset_right = 98.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 18
+text = "背景音乐"
+horizontal_alignment = 1
+
+[node name="音效awa" type="HSlider" parent="CenterContainer/SettingMenu"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="CenterContainer/SettingMenu/音效awa"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = -6.0
+offset_top = -15.0
+offset_right = 94.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 18
+text = "音效"
+horizontal_alignment = 1
+
+[node name="灵敏度" type="HSlider" parent="CenterContainer/SettingMenu"]
+layout_mode = 2
+max_value = 0.1
+step = 0.001
+script = ExtResource("4_3sbvi")
+
+[node name="Label" type="Label" parent="CenterContainer/SettingMenu/灵敏度"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -17.0
+offset_right = 74.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 18
+text = "灵敏度"
+
+[node name="back" type="Button" parent="CenterContainer/SettingMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 30
+text = "退出
+"
+
+[node name="UPMenu" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="CenterContainer/UPMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 35
+text = "程序：B站 学渣驹
+美术：互联网
+音乐：互联网
+”私人”策划：B站 学渣驹"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="返回" type="Button" parent="CenterContainer/UPMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_hat8c")
+theme_override_font_sizes/font_size = 30
+text = "退出
+"
+
+[node name="帧率" parent="." instance=ExtResource("5_rm2m0")]
+
+[connection signal="pressed" from="CenterContainer/Buttons/Play" to="CenterContainer/Buttons/Play" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/Buttons/Setting" to="CenterContainer/Buttons/Play" method="_on_setting_pressed"]
+[connection signal="pressed" from="CenterContainer/Buttons/UPqwq" to="CenterContainer/Buttons/Play" method="_on_u_pqwq_pressed"]
+[connection signal="pressed" from="CenterContainer/Buttons/新手指导" to="." method="_on_新手指导_pressed"]
+[connection signal="pressed" from="CenterContainer/Buttons/Quit" to="CenterContainer/Buttons/Play" method="_on_quit_pressed"]
+[connection signal="toggled" from="CenterContainer/SettingMenu/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="CenterContainer/SettingMenu/is_fps" to="." method="_on_is_fps_toggled"]
+[connection signal="toggled" from="CenterContainer/SettingMenu/性能模式" to="." method="_on_性能模式_toggled"]
+[connection signal="changed" from="CenterContainer/SettingMenu/主音量" to="." method="_on_主音量_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingMenu/主音量" to="." method="_on_主音量_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingMenu/背景音乐" to="." method="_on_背景音乐_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingMenu/音效awa" to="." method="_on_音效awa_value_changed"]
+[connection signal="pressed" from="CenterContainer/SettingMenu/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CenterContainer/UPMenu/返回" to="." method="_on_返回_pressed"]
+[connection signal="pressed" from="CenterContainer/UPMenu/返回" to="CenterContainer/Buttons/Play" method="_on_back_pressed"]
