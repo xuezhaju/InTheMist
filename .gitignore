@@ -1,2 +1,4 @@
 /android/build/
 *.aar
+/android/build/
+*.aar
