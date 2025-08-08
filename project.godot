@@ -8,33 +8,22 @@
 
 config_version=5
 
-<<<<<<< HEAD
 [SimpleGrassTextured]
 
 General/evaluate_draw_time=100
 General/interactive_resolution=256
 
-=======
->>>>>>> a2a84843386ce9e2c30a8411ce5990497506ca8b
 [application]
 
 config/name="InTheMist"
 run/main_scene="uid://b8x1cnsl6rf4r"
 config/features=PackedStringArray("4.4", "Forward Plus")
-<<<<<<< HEAD
 config/icon="uid://bpprprtqk226k"
-=======
-config/macos_native_icon="uid://cyw4qqcpiyfwh"
-config/windows_native_icon="uid://cyw4qqcpiyfwh"
->>>>>>> a2a84843386ce9e2c30a8411ce5990497506ca8b
 
 [autoload]
 
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
-<<<<<<< HEAD
 Global="*res://Global.gd"
-=======
->>>>>>> a2a84843386ce9e2c30a8411ce5990497506ca8b
 
 [display]
 
@@ -45,13 +34,10 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")
 
-<<<<<<< HEAD
 [gui]
 
 theme/custom_font="uid://b5nd0c05eyg4j"
 
-=======
->>>>>>> a2a84843386ce9e2c30a8411ce5990497506ca8b
 [input]
 
 jump={
@@ -94,7 +80,6 @@ quit={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-<<<<<<< HEAD
 slow={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194326,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
@@ -118,8 +103,6 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
-=======
->>>>>>> a2a84843386ce9e2c30a8411ce5990497506ca8b
 
 [shader_globals]
 
